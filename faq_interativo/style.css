@@ -1,0 +1,64 @@
+* {
+    margin: 0; /* Remove margens padrão de todos os elementos */
+    padding: 0; /* Remove preenchimentos padrão */
+    box-sizing: border-box; /* Garante que padding e border não aumentem a largura total do elemento */
+}
+
+body {
+    background-color: rgb(247, 233, 208); /* Cor de fundo suave */
+    color: rgb(14, 45, 219); /* Cor principal do texto */
+    padding: 20px; /* Espaçamento interno em todo o corpo da página */
+    font-family: "Ancizar Sans", sans-serif; /* Fonte principal do site */
+}
+
+.faq {
+    max-width: 600px; /* Limita a largura máxima da FAQ */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    background: rgba(103, 255, 166, 0.616); /* Fundo com leve transparência */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px black; /* Sombra leve para destacar a caixa */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites */
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.507); /* Linha separadora entre os itens */
+}
+
+.pergunta {
+    padding: 15px; /* Espaçamento interno para a pergunta */
+    font-size: 1.1rem; /* Tamanho da fonte relativo à raiz (boa prática para responsividade) */
+    cursor: pointer; /* Mostra o cursor de clique ao passar o mouse */
+    position: relative; /* Necessário para posicionar o pseudo-elemento ::after */
+}
+
+.pergunta::after {
+    content: "+"; /* Ícone de "expandir" */
+    position: absolute; /* Posiciona em relação ao .pergunta */
+    top: 50%; /* Alinha verticalmente ao meio */
+    right: 20px; /* Afasta da borda direita */
+    font-size: 1.2rem; /* Tamanho do ícone */
+    transform: translateY(-50%); /* Corrige o alinhamento vertical */
+    transition: transform 0.3s; /* Anima a rotação do ícone */
+}
+
+.pergunta.ativo::after {
+    content: "-"; /* Ícone de "recolher" */
+    transform: translateY(-50%) rotate(180deg); /* Roda o ícone, dando ideia de movimento */
+}
+
+.resposta {
+    padding: 0 15px 15px; /* Espaço lateral e inferior */
+    font-size: 1rem; /* Tamanho padrão de leitura */
+    line-height: 1.4; /* Espaçamento entre linhas para melhor leitura */
+    transition: max-height 0.3s ease, opacity 0.3s ease; /* Transição suave para expandir/recolher */
+    opacity: 1; /* Totalmente visível quando ativa */
+    max-height: 500px; /* Define uma altura máxima que permita conteúdo aparecer */
+    overflow: hidden; /* Garante que o conteúdo não "vaze" */
+}
+
+.escondido {
+    opacity: 0; /* Torna invisível */
+    padding-top: 0; /* Remove qualquer espaço acima */
+    max-height: 0; /* Recolhe completamente o conteúdo */
+    transition: max-height 0.3s ease, opacity 0.3s ease; /* Anima a ocultação */
+}
